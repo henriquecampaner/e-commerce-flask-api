@@ -30,5 +30,59 @@ This repository contains a simple e-commerce backend API built using Flask, Flas
 1. **Clone the repository:**
 
    ```bash
-   git clone https://github.com/your-username/ecommerce-flask-api.git
-   cd ecommerce-flask-api
+   git clone https://github.com/henriquecampaner/e-commerce-flask-api.git
+   cd e-commerce-flask-api
+
+2. **Create and activate a virtual environment:**
+
+   ```bash
+   python3 -m venv venv
+   source venv/bin/activate
+   ```
+
+3. **Install the required dependencies:**
+
+   ```bash
+   pip install -r requirements.txt
+   ```
+
+4. **Initialize the database:**
+
+   Start a Python shell within the project and run the following commands to create the database:
+
+   ```python
+   from app import db
+   db.create_all()
+   exit()
+   ```
+
+5. **Run the Flask application:**
+
+   ```bash
+   flask run
+   ```
+
+   The application will be running on `http://127.0.0.1:5000/` by default.
+
+## API Endpoints
+
+### Authentication
+
+- **POST /login**: Log in a user.
+- **POST /logout**: Log out the current user.
+
+### Products
+
+- **GET /api/products**: Retrieve a list of all products.
+- **GET /api/products/<int:product_id>**: Retrieve details of a specific product.
+- **POST /api/products/add**: Add a new product (Requires login).
+- **PUT /api/products/update/<int:product_id>**: Update an existing product (Requires login).
+- **DELETE /api/products/delete/<int:product_id>**: Delete a product (Requires login).
+
+### Cart Management
+
+- **POST /api/cart/add/<int:product_id>**: Add a product to the cart (Requires login).
+- **DELETE /api/cart/remove/<int:product_id>**: Remove a product from the cart (Requires login).
+- **GET /api/cart**: View the current user's cart (Requires login).
+- **POST /api/cart/checkout**: Checkout and clear the cart (Requires login).
+
